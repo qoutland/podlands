@@ -20,18 +20,21 @@ jobs:
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
     - uses: actions/checkout@v4
-    
+
+    - name: Set tag using date
+      run: echo "TAG=$(date +%s)" >> $GITHUB_ENV
+
     - name: Build the backend Docker image
-      run: docker build backend/ --file backend/Dockerfile --tag qoutland/podlands-be:$(date +%s)
+      run: docker build backend/ --file backend/Dockerfile --tag qoutland/podlands-be:$TAG
     - name: Push the backend Docker image
-      run: docker push qoutland/podlands-be:$(date +%s)
+      run: docker push qoutland/podlands-be:$TAG
 
     - name: Build the frontend Docker image
-      run: docker build frontend/ --file frontend/Dockerfile --tag qoutland/podlands-fe:$(date +%s)
+      run: docker build frontend/ --file frontend/Dockerfile --tag qoutland/podlands-fe:$TAG
     - name: Push the frontend Docker image
-      run: docker push qoutland/podlands-fe:$(date +%s)
+      run: docker push qoutland/podlands-fe:$TAG
 
     - name: Build the snake Docker image
-      run: docker build snake/ --file snake/Dockerfile --tag qoutland/podlands-snake:$(date +%s)
+      run: docker build snake/ --file snake/Dockerfile --tag qoutland/podlands-snake:$TAG
     - name: Push the snake Docker image
-      run: docker push qoutland/podlands-snake:$(date +%s)
+      run: docker push qoutland/podlands-snake:$TAG
