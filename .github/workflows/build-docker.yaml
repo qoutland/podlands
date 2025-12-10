@@ -1,5 +1,4 @@
 name: Build Docker Images
-concurrency: prod
 
 on:
   push:
@@ -11,9 +10,9 @@ jobs:
   build_and_push:
 
     runs-on: ubuntu-latest
+    environment: prod
 
     steps:
-
     - name: Login to Docker Hub
       env:
         DOCKER_USERNAME: ${{ vars.DOCKER_USERNAME }}
@@ -21,6 +20,7 @@ jobs:
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
     - uses: actions/checkout@v4
+    
     - name: Build the backend Docker image
       run: docker build backend/ --file backend/Dockerfile --tag qoutland/podlands-be:$(date +%s)
     - name: Push the backend Docker image
