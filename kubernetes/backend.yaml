@@ -1,0 +1,89 @@
+# Role for backend to deploy to snake namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: backend-role
+  namespace: snake
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "services", "ingresses"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+---
+# Role binding for backend to deploy to snake namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: backend-rb
+  namespace: snake
+subjects:
+  - kind: ServiceAccount
+    name: backend-sa
+    namespace: website
+roleRef:
+  kind: Role
+  name: backend-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# Service account for backend to deploy to snake namespace
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: backend-sa
+  namespace: website
+---
+# Deployment for backend to deploy to snake namespace
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podlands-backend
+  namespace: website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: podlands-backend
+  template:
+    metadata:
+      labels:
+        app: podlands-backend
+    spec:
+      serviceAccountName: backend-sa
+      containers:
+        - name: podlands-backend
+          image: docker.io/qoutland/podlands-be:latest
+          imagePullPolicy: Never
+---
+# Podlands backend service
+apiVersion: v1
+kind: Service
+metadata:
+  name: podlands-backend
+  namespace: website
+spec:
+  selector:
+    app: podlands-backend
+  ports:
+    - port: 8000
+      targetPort: 8000
+      protocol: TCP
+      name: http
+---
+# Ingress for the podlands backend, this will allow the backend to be accessed from the domain
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: podlands-backend
+#   namespace: website
+# spec:
+#   rules:
+#     # - host: {{ domain }}
+#     - host: localhost
+#       http:
+#         paths:
+#           - path: /api
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: podlands-backend
+#                 port:
+#                   number: 8000

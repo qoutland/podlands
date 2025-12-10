@@ -1,0 +1,14 @@
+# Service for a single snake game
+apiVersion: v1
+kind: Service
+metadata:
+  name: snake-{{ game_id }}
+  namespace: {{ namespace }}
+spec:
+  selector:
+    app: snake
+    game_id: {{ game_id }}
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

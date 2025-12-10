@@ -1,0 +1,18 @@
+# Ingress for a single snake game, this will allow each game to be accessed from a specific path
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: snake-{{ game_id }}
+  namespace: {{ namespace }}
+spec:
+  rules:
+    - host: {{ domain }}
+      http:
+        paths:
+          - path: /snake/{{ game_id }}
+            pathType: Prefix
+            backend:
+              service:
+                name: snake-{{ game_id }}
+                port:
+                  number: 80

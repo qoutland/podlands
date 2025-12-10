@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Service - Status</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2a1f0d 0%, #3d2816 50%, #2a1f0d 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f0e6d2;
+            padding: 20px;
+        }
+        
+        .container {
+            background: linear-gradient(145deg, #1f1f1f 0%, #2a2a2a 100%);
+            border: 4px solid #ffd442;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 212, 66, 0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #ffd442;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #00ff66;
+            color: #000;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+        }
+        
+        .deployment-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #2a2a2a;
+            border-radius: 8px;
+            border: 2px solid #ffd442;
+        }
+        
+        .deployment-id {
+            font-size: 1.5rem;
+            color: #ffd442;
+            font-weight: bold;
+            margin-top: 10px;
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .label {
+            color: #aaa;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐍 Snake Service</h1>
+        <div class="status pulse">● UP</div>
+        <p style="margin-top: 20px; color: #aaa;">Service is running and ready</p>
+        
+        <div class="deployment-info">
+            <div class="label">Deployment ID</div>
+            <div class="deployment-id">{{DEPLOYMENT_ID}}</div>
+        </div>
+    </div>
+</body>
+</html>
+

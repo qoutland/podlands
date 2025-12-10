@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podlands-frontend
+  namespace: website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: podlands-frontend
+  template:
+    metadata:
+      labels:
+        app: podlands-frontend
+    spec:
+      containers:
+        - name: podlands-frontend
+          image: docker.io/qoutland/podlands-fe:latest
+          imagePullPolicy: Never
+---
+# Podlands frontend service
+apiVersion: v1
+kind: Service
+metadata:
+  name: podlands-frontend
+  namespace: website
+spec:
+  selector:
+    app: podlands-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+
+# # Ingress for the podlands backend, this will allow the backend to be accessed from the domain
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: podlands-frontend
+#   namespace: website
+# spec:
+#   rules:
+#     - host: localhost
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: podlands-frontend
+#                 port:
+#                   number: 80

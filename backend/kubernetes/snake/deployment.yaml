@@ -1,0 +1,37 @@
+# Deployment for a single snake game
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snake-{{ game_id }}
+  labels:
+    app: snake
+    game_id: {{ game_id }}
+  namespace: {{ namespace }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: snake
+      game_id: {{ game_id }}
+  template:
+    metadata:
+      labels:
+        app: snake
+        game_id: {{ game_id }}
+    spec:
+      containers:
+        - name: snake
+          image: docker.io/qoutland/snake:latest
+          imagePullPolicy: Never
+          env:
+            - name: DEPLOYMENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          resources:
+            requests:
+              cpu: 100m
+              memory: 24Mi
+            limits:
+              cpu: 100m
+              memory: 24Mi

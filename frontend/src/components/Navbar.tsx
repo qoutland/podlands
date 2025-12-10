@@ -76,7 +76,7 @@ export default function Navbar() {
         >
           <Link to="/" onClick={closeMenu}>Home</Link>
           <Link to="/projects" onClick={closeMenu}>Projects</Link>
-          <Link to="/arena" onClick={closeMenu}>PodLands Arena</Link>
+          <Link to="/snake" onClick={closeMenu}>KubeSnake</Link>
           <Link to="/modeling" onClick={closeMenu}>3D Prints</Link>
         </div>
 
