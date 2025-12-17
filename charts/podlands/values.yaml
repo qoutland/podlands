@@ -18,8 +18,6 @@ backend:
     app: podlands-backend
 
   image:
-    # repository: ghcr.io/qoutland/podlands/backend
-    # tag: latest
     pullPolicy: IfNotPresent
 
   service:
@@ -56,8 +54,6 @@ frontend:
     app: podlands-frontend
 
   image:
-    # repository: ghcr.io/qoutland/podlands/frontend
-    # tag: latest
     pullPolicy: IfNotPresent
 
   service:
@@ -90,11 +86,11 @@ frontend:
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
-  enabled: false
+  enabled: true
   className: ""
   annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/rewrite-target: /$1
 
   hosts:
     - host: qoutland.com
