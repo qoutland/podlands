@@ -7,7 +7,7 @@ spec:
   imageRepositoryRef:
     name: podlands-backend
   policy:
-    n numerical:
+    numerical:
       order: asc
 ---
 apiVersion: image.toolkit.fluxcd.io/v1
@@ -19,5 +19,5 @@ spec:
   imageRepositoryRef:
     name: podlands-frontend
   policy:
-    n numerical:
+    numerical:
       order: asc
