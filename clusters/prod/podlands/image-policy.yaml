@@ -1,17 +1,23 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageRepository
+kind: ImagePolicy
 metadata:
   name: podlands-backend
   namespace: flux-system
 spec:
-  image: docker.io/qoutland/podlands/backend
-  interval: 1m
+  imageRepositoryRef:
+    name: podlands-backend
+  policy:
+    alphabetical:
+      order: asc
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageRepository
+kind: ImagePolicy
 metadata:
   name: podlands-frontend
   namespace: flux-system
 spec:
-  image: docker.io/qoutland/podlands/frontend
-  interval: 1m
+  imageRepositoryRef:
+    name: podlands-frontend
+  policy:
+    alphabetical:
+      order: asc

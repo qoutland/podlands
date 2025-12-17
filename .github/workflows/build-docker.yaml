@@ -34,7 +34,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Set tag using date
-      run: echo "TAG=$(date +%s)" >> $GITHUB_ENV
+      run: echo "TAG=$(date +%y%m%d%H%M)" >> $GITHUB_ENV
 
     - name: Build the backend Docker image
       uses: docker/build-push-action@v5
