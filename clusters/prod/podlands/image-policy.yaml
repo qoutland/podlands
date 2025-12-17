@@ -1,23 +1,23 @@
-apiVersion: image.toolkit.fluxcd.io/v1
-kind: ImagePolicy
-metadata:
-  name: podlands-backend
-  namespace: flux-system
-spec:
-  imageRepositoryRef:
-    name: podlands-backend
-  policy:
-    numerical:
-      order: asc
----
-apiVersion: image.toolkit.fluxcd.io/v1
-kind: ImagePolicy
-metadata:
-  name: podlands-frontend
-  namespace: flux-system
-spec:
-  imageRepositoryRef:
-    name: podlands-frontend
-  policy:
-    numerical:
-      order: asc
+# apiVersion: image.toolkit.fluxcd.io/v1
+# kind: ImagePolicy
+# metadata:
+#   name: podlands-backend
+#   namespace: flux-system
+# spec:
+#   imageRepositoryRef:
+#     name: podlands-backend
+#   policy:
+#     numerical:
+#       order: asc
+# ---
+# apiVersion: image.toolkit.fluxcd.io/v1
+# kind: ImagePolicy
+# metadata:
+#   name: podlands-frontend
+#   namespace: flux-system
+# spec:
+#   imageRepositoryRef:
+#     name: podlands-frontend
+#   policy:
+#     numerical:
+#       order: asc
