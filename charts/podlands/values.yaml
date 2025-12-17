@@ -88,6 +88,8 @@ frontend:
 ingress:
   enabled: true
   className: ""
+  labels:
+    app: podlands-ingress
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/rewrite-target: /$1
