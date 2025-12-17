@@ -19,7 +19,7 @@ backend:
 
   image:
     repository: ghcr.io/qoutland/podlands/backend
-    tag: latest
+    # tag: latest
     pullPolicy: IfNotPresent
 
   service:
@@ -57,7 +57,7 @@ frontend:
 
   image:
     repository: ghcr.io/qoutland/podlands/frontend
-    tag: latest
+    # tag: latest
     pullPolicy: IfNotPresent
 
   service:
