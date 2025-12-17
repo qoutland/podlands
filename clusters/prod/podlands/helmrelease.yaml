@@ -12,12 +12,12 @@ spec:
         kind: GitRepository
         name: flux-system
         namespace: flux-system
-  # values:
-  #   backend:
-  #     image:
-  #       repository: ghcr.io/qoutland/podlands/backend
-  #       tag: "sha-0000" # will be replaced automatically
-  #   frontend:
-  #     image:
-  #       repository: ghcr.io/qoutland/podlands/frontend
-  #       tag: "sha-0000" # will be replaced automatically
+  values:
+    backend:
+      image:
+        repository: ghcr.io/qoutland/podlands/backend
+        tag: "2512172152" # will be replaced automatically
+    frontend:
+      image:
+        repository: ghcr.io/qoutland/podlands/frontend
+        tag: "2512172152" # will be replaced automatically
