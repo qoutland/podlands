@@ -10,7 +10,7 @@ spec:
       chart: ./charts/podlands
       sourceRef:
         kind: GitRepository
-        name: podlands
+        name: flux-system
         namespace: flux-system
   # values:
   #   backend:
