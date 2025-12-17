@@ -18,7 +18,7 @@ logger.info("Starting Chaos Arena API")
 # Configure CORS to allow frontend requests
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],  # Add other origins as needed
+    allow_origins=[f"{HTTP_SCHEME}://{DOMAIN}"],  # Add other origins as needed
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

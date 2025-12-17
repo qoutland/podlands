@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: podlands
+  namespace: podlands
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./charts/podlands
+      sourceRef:
+        kind: GitRepository
+        name: podlands
+        namespace: flux-system
+  values:
+    replicaCount: 2

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: website 
+  name: {{ .Values.namespace }}
   labels:
     environment: development
     team: qoutland
@@ -9,7 +9,7 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: snake
+  name: {{ .Values.snake_namespace }}
   labels:
     environment: development
     team: qoutland

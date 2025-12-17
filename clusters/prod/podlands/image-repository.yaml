@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: podlands
+  namespace: flux-system
+spec:
+  image: docker.io/qoutland/podlands
+  interval: 1m

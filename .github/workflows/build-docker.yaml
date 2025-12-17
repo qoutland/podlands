@@ -13,11 +13,8 @@ jobs:
     environment: prod
 
     steps:
-    - name: Login to Docker Hub
-      env:
-        DOCKER_USERNAME: ${{ vars.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - name: Login to Registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
     - uses: actions/checkout@v4
 
@@ -25,16 +22,16 @@ jobs:
       run: echo "TAG=$(date +%s)" >> $GITHUB_ENV
 
     - name: Build the backend Docker image
-      run: docker build backend/ --file backend/Dockerfile --tag qoutland/podlands-be:$TAG
+      run: docker build backend/ --file backend/Dockerfile --tag ghcr.io/qoutland/podlands/backend:$TAG
     - name: Push the backend Docker image
-      run: docker push qoutland/podlands-be:$TAG
+      run: docker push ghcr.io/qoutland/podlands/backend:$TAG
 
     - name: Build the frontend Docker image
-      run: docker build frontend/ --file frontend/Dockerfile --tag qoutland/podlands-fe:$TAG
+      run: docker build frontend/ --file frontend/Dockerfile --tag ghcr.io/qoutland/podlands/frontend:$TAG
     - name: Push the frontend Docker image
-      run: docker push qoutland/podlands-fe:$TAG
+      run: docker push ghcr.io/qoutland/podlands/frontend:$TAG
 
     - name: Build the snake Docker image
-      run: docker build snake/ --file snake/Dockerfile --tag qoutland/podlands-snake:$TAG
+      run: docker build snake/ --file snake/Dockerfile --tag ghcr.io/qoutland/podlands/snake:$TAG
     - name: Push the snake Docker image
-      run: docker push qoutland/podlands-snake:$TAG
+      run: docker push ghcr.io/qoutland/podlands/snake:$TAG
