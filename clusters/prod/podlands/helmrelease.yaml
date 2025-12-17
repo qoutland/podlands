@@ -16,8 +16,8 @@ spec:
     backend:
       image:
         repository: ghcr.io/qoutland/podlands/backend
-        tag: "2512172152" # will be replaced automatically
+        tag: "2512172221" # will be replaced automatically
     frontend:
       image:
         repository: ghcr.io/qoutland/podlands/frontend
-        tag: "2512172152" # will be replaced automatically
+        tag: "2512172221" # will be replaced automatically
