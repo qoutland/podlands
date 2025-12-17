@@ -8,6 +8,7 @@ from queue import Queue
 import threading
 import sys
 
+from common.config import HTTP_SCHEME, DOMAIN
 from common.logger import logger
 
 app = FastAPI(title="Chaos Arena API")
