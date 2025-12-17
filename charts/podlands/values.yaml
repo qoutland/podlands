@@ -39,11 +39,11 @@ backend:
     securityContext: {}
     livenessProbe:
       httpGet:
-        path: /health
+        path: /api/health
         port: http
     readinessProbe:
       httpGet:
-        path: /health
+        path: /api/health
         port: http
     nodeSelector: {}
     affinity: {}
