@@ -1,4 +1,4 @@
-apiVersion: image.toolkit.fluxcd.io/v1beta2
+apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImagePolicy
 metadata:
   name: podlands-backend
@@ -8,9 +8,9 @@ spec:
     name: podlands-backend
   policy:
     alphabetical:
-      order: asc
+      order: desc
 ---
-apiVersion: image.toolkit.fluxcd.io/v1beta2
+apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImagePolicy
 metadata:
   name: podlands-frontend
@@ -20,4 +20,4 @@ spec:
     name: podlands-frontend
   policy:
     alphabetical:
-      order: asc
+      order: desc

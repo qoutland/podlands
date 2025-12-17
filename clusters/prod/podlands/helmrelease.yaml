@@ -12,14 +12,12 @@ spec:
         kind: GitRepository
         name: podlands
         namespace: flux-system
-    values:
-      backend:
-        image:
-          repository: ghcr.io/qoutland/podlands/backend
-          tag: sha-0000
-      frontend:
-        image:
-          repository: ghcr.io/qoutland/podlands/frontend
-          tag: sha-0000
   values:
-    replicaCount: 2
+    backend:
+      image:
+        repository: ghcr.io/qoutland/podlands/backend
+        tag: "sha-0000" # will be replaced automatically
+    frontend:
+      image:
+        repository: ghcr.io/qoutland/podlands/frontend
+        tag: "sha-0000" # will be replaced automatically
