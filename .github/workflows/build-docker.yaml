@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  REGISTRY: ghcr.io
+  REPOSITORY: ${{ github.repository }}
+
 jobs:
   build_and_push:
 
@@ -19,25 +23,30 @@ jobs:
       id-token: write
 
     steps:
-    - name: Login to Registry
-      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-    - uses: actions/checkout@v4
+    - name: Login to Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Set tag using date
       run: echo "TAG=$(date +%s)" >> $GITHUB_ENV
 
     - name: Build the backend Docker image
-      run: docker build backend/ --file backend/Dockerfile --tag ghcr.io/qoutland/podlands/backend:$TAG
-    - name: Push the backend Docker image
-      run: docker push ghcr.io/qoutland/podlands/backend:$TAG
+      uses: docker/build-push-action@v5
+      with:
+        context: backend
+        file: backend/Dockerfile
+        tags: ${{ env.REGISTRY }}/${{ env.REPOSITORY }}/backend:${{ env.TAG }}
+        push: true
 
     - name: Build the frontend Docker image
-      run: docker build frontend/ --file frontend/Dockerfile --tag ghcr.io/qoutland/podlands/frontend:$TAG
-    - name: Push the frontend Docker image
-      run: docker push ghcr.io/qoutland/podlands/frontend:$TAG
-
-    - name: Build the snake Docker image
-      run: docker build snake/ --file snake/Dockerfile --tag ghcr.io/qoutland/podlands/snake:$TAG
-    - name: Push the snake Docker image
-      run: docker push ghcr.io/qoutland/podlands/snake:$TAG
+      uses: docker/build-push-action@v5
+      with:
+        context: frontend
+        file: frontend/Dockerfile
+        tags: ${{ env.REGISTRY }}/${{ env.REPOSITORY }}/frontend:${{ env.TAG }}
