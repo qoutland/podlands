@@ -18,3 +18,7 @@ spec:
   update:
     path: ./clusters/prod/podlands
     strategy: Setters
+
+    policies:
+      - name: podlands-frontend
+      - name: podlands-backend
