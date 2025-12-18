@@ -115,7 +115,7 @@ config:
   data:
     HTTP_SCHEME: https
     DOMAIN: qoutland.com
-    SNAKE_API: https://{{ .Values.domain }}/api/snake
+    SNAKE_API: https://qoutland.com/api/snake
     SNAKE_NAMESPACE: snake
     LOAD_INCREMENT: 100.0
 
