@@ -60,3 +60,4 @@ jobs:
         file: frontend/Dockerfile
         platforms: linux/amd64,linux/arm64
         tags: ${{ env.REGISTRY }}/${{ env.REPOSITORY }}/frontend:${{ env.TAG }}
+        push: true
