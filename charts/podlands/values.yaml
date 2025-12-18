@@ -88,9 +88,10 @@ frontend:
 ingress:
   enabled: true
   className: ""
+  labels:
+    app: podlands
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/rewrite-target: /$1
 
   hosts:
     - host: qoutland.com
@@ -99,12 +100,14 @@ ingress:
           pathType: Prefix
           service:
             name: podlands-backend
-            port: 8000
+            port: 
+              number: 8000
         - path: /
           pathType: Prefix
           service:
             name: podlands-frontend
-            port: 80
+            port: 
+              number: 80
   tls: []
  
 
