@@ -1,17 +1,17 @@
-# apiVersion: image.toolkit.fluxcd.io/v1beta2
-# kind: ImageRepository
-# metadata:
-#   name: podlands-backend
-#   namespace: flux-system
-# spec:
-#   image: docker.io/qoutland/podlands/backend
-#   interval: 1m
-# ---
-# apiVersion: image.toolkit.fluxcd.io/v1beta2
-# kind: ImageRepository
-# metadata:
-#   name: podlands-frontend
-#   namespace: flux-system
-# spec:
-#   image: docker.io/qoutland/podlands/frontend
-#   interval: 1m
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: podlands-backend
+  namespace: flux-system
+spec:
+  image: docker.io/qoutland/podlands/backend
+  interval: 1m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: podlands-frontend
+  namespace: flux-system
+spec:
+  image: docker.io/qoutland/podlands/frontend
+  interval: 1m
