@@ -7,8 +7,8 @@ spec:
   imageRepositoryRef:
     name: podlands-backend
   policy:
-    alphabetical:
-      order: desc
+    numerical:
+      order: asc
 ---
 apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImagePolicy
@@ -19,5 +19,5 @@ spec:
   imageRepositoryRef:
     name: podlands-frontend
   policy:
-    alphabetical:
-      order: desc
+    numerical:
+      order: asc
