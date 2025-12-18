@@ -4,7 +4,7 @@ metadata:
   name: podlands-backend
   namespace: flux-system
 spec:
-  image: docker.io/qoutland/podlands/backend
+  image: ghcr.io/qoutland/podlands/backend
   interval: 1m
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
@@ -13,5 +13,5 @@ metadata:
   name: podlands-frontend
   namespace: flux-system
 spec:
-  image: docker.io/qoutland/podlands/frontend
+  image: ghcr.io/qoutland/podlands/frontend
   interval: 1m
