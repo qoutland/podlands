@@ -39,6 +39,9 @@ spec:
           {{- end }}
           image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
+          envFrom:
+          - configMapRef:
+              name: {{ include "podlands.name" . }}-config
           ports:
             - name: http
               containerPort: {{ .Values.frontend.service.port }}

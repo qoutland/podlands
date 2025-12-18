@@ -5,9 +5,9 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-  paths_ignore:
-    - "clusters/**"
-    - "charts/**"
+    paths-ignore:
+      - "clusters/**"
+      - "charts/**"
 
 env:
   REGISTRY: ghcr.io
