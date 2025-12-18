@@ -10,7 +10,7 @@ spec:
   ref:
     branch: master
   secretRef:
-    name: flux-system
+    name: flux-ssh
   url: ssh://git@github.com/qoutland/podlands
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
