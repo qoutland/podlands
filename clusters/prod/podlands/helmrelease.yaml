@@ -16,8 +16,8 @@ spec:
     backend:
       image:
         repository: ghcr.io/qoutland/podlands/backend
-        tag: "2512172320" # {"$imagepolicy": "flux-system:podlands-backend:tag"}
+        tag: "2025.1218.619" # {"$imagepolicy": "flux-system:podlands-backend:tag"}
     frontend:
       image:
         repository: ghcr.io/qoutland/podlands/frontend
-        tag: "2512172320" # {"$imagepolicy": "flux-system:podlands-frontend:tag"}
+        tag: "2025.1218.619" # {"$imagepolicy": "flux-system:podlands-frontend:tag"}
