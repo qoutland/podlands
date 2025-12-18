@@ -5,6 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   image: ghcr.io/qoutland/podlands/backend
+  SecretRef:
+    name: ghcr
   interval: 1m
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
@@ -14,4 +16,6 @@ metadata:
   namespace: flux-system
 spec:
   image: ghcr.io/qoutland/podlands/frontend
+  SecretRef:
+    name: ghcr
   interval: 1m
