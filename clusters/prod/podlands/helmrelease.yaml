@@ -20,4 +20,4 @@ spec:
     frontend:
       image:
         repository: ghcr.io/qoutland/podlands/frontend
-        tag: "2025.1218.1957" # {"$imagepolicy": "flux-system:podlands-frontend:tag"}
+        tag: "2025.1218.1958" # {"$imagepolicy": "flux-system:podlands-frontend:tag"}
