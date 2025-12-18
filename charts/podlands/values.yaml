@@ -23,8 +23,6 @@ backend:
   service:
     type: ClusterIP
     port: 8000
-    selector: 
-      app: podlands-backend
 
   deployment:
     autoscaling:
@@ -61,8 +59,6 @@ frontend:
   service:
     type: ClusterIP
     port: 80
-    selector:
-      app: podlands-frontend
 
   deployment:
     autoscaling:
