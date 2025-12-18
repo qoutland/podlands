@@ -91,7 +91,6 @@ ingress:
   labels:
     app: podlands
   annotations:
-    kubernetes.io/ingress.class: traefik
 
   hosts:
     - host: qoutland.com
