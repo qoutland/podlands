@@ -4,9 +4,10 @@ metadata:
   name: podlands
   namespace: flux-system
 spec:
+  sourceRef:
+    kind: GitRepository
+    name: podlands
   git:
-    checkout:
-      ref: master
     commit:
       author:
         email: qoutland@gmail.com
