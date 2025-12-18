@@ -9,7 +9,6 @@ spec:
   policy:
     semver:
       range: ">=0.0.0"
-      order: desc
 ---
 apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImagePolicy
@@ -22,4 +21,3 @@ spec:
   policy:
     semver:
       range: ">=0.0.0"
-      order: desc
