@@ -42,7 +42,10 @@ jobs:
       uses: docker/setup-buildx-action@v3
 
     - name: Set tag using date
-      run: echo "TAG=$(date +%Y.%m.%d.%H%M)" >> $GITHUB_ENV
+      run: |
+        HOUR=$(date +%H | sed 's/^0//')
+        MIN=$(date +%M | sed 's/^0//')
+        echo "TAG=$(date +%Y.%m.%d).$HOUR$MIN" >> $GITHUB_ENV
 
     - name: Build the backend Docker image
       uses: docker/build-push-action@v6
