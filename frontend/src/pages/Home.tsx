@@ -44,7 +44,7 @@ export default function Home() {
         </p>
         <p style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)", maxWidth: "800px", margin: "0 auto", lineHeight: "1.8", padding: "0 1rem" }}>
           Building scalable infrastructure, automating everything, and turning chaos into order. 
-          Passionate about cloud-native technologies, containerization, and making systems resilient.
+          Passionate about cloud-native technologies, containerization, and improving the developer experience.
         </p>
       </section>
 
