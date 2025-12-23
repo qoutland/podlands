@@ -3,6 +3,8 @@ name: Build Frontend Docker Image
 on:
   push:
     branches: [ "master" ]
+    paths:
+      - "frontend/**"
   pull_request:
     branches: [ "master" ]
     paths:
@@ -13,7 +15,7 @@ env:
   REPOSITORY: ${{ github.repository }}
 
 jobs:
-  build_and_push:
+  build_frontend:
 
     runs-on: ubuntu-latest
     environment: prod
