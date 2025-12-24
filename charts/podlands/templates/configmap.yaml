@@ -7,6 +7,9 @@ metadata:
   labels:
     app.kubernetes.io/name: {{ include "podlands.name" . }}
 data:
+  BACKEND_VERSION: {{ .Values.backend.image.tag }}
+  FRONTEND_VERSION: {{ .Values.frontend.image.tag }}
+  SNAKE_IMAGE: {{ .Values.snake.image.repository }}:{{ .Values.snake.image.tag }}
 {{- range $key, $value := .Values.config.data }}
   {{ $key }}: {{ $value | quote }}
 {{- end }}

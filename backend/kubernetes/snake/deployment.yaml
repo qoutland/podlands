@@ -21,8 +21,8 @@ spec:
     spec:
       containers:
         - name: snake
-          image: docker.io/qoutland/snake:latest
-          imagePullPolicy: Never
+          image: {{ image }}
+          imagePullPolicy: IfNotPresent
           env:
             - name: DEPLOYMENT_ID
               valueFrom:

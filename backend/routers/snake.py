@@ -14,7 +14,7 @@ import uuid
 from fastapi.websockets import WebSocket
 from fastapi.websockets import WebSocketDisconnect
 from fastapi.websockets import WebSocketState
-from common.config import SNAKE_NAMESPACE, DOMAIN, LOAD_INCREMENT, PODS_DELETE_INTERVAL
+from common.config import SNAKE_NAMESPACE, SNAKE_IMAGE, DOMAIN, LOAD_INCREMENT, PODS_DELETE_INTERVAL
 from common.logger import logger
 from typing import Dict, Optional
 from datetime import datetime, timedelta
@@ -182,8 +182,6 @@ def _get_metrics(game_id: str) -> Dict:
 def get_pods(game_id: str):
     try:
         pods = core.list_namespaced_pod(SNAKE_NAMESPACE, label_selector=f"game_id={game_id}")
-        with open("pods.yaml", "w") as f:
-            yaml.dump(pods.to_dict()["items"], f, indent=4)
         pods_list = []
         for pod in pods.to_dict()["items"]:
             pods_list.append({
@@ -204,7 +202,7 @@ def snake_init():
     game_id = str(uuid.uuid4())[:8]
 
     # Render the deployment, service, and ingress templates
-    deployment = yaml.safe_load(env.get_template("snake/deployment.yaml").render(game_id=game_id, namespace=SNAKE_NAMESPACE))
+    deployment = yaml.safe_load(env.get_template("snake/deployment.yaml").render(game_id=game_id, image=SNAKE_IMAGE, namespace=SNAKE_NAMESPACE))
     service = yaml.safe_load(env.get_template("snake/service.yaml").render(game_id=game_id, namespace=SNAKE_NAMESPACE))
     scaling = yaml.safe_load(env.get_template("snake/autoscaling.yaml").render(game_id=game_id, namespace=SNAKE_NAMESPACE))
     ingress = yaml.safe_load(env.get_template("snake/ingress.yaml").render(game_id=game_id, namespace=SNAKE_NAMESPACE, domain=DOMAIN))
@@ -230,7 +228,7 @@ def snake_eat(game_id: str):
     eat_counters[game_id] += 1
     
     # Only delete pod every N food items to allow metrics to accumulate
-    should_delete_pod = eat_counters[game_id] % PODS_DELETE_INTERVAL == 0
+    should_delete_pod = eat_counters[game_id] % int(PODS_DELETE_INTERVAL) == 0
     
     if should_delete_pod:
         pods = get_pods(game_id)
@@ -258,7 +256,7 @@ def generate_load(game_id: str, requests_per_sec: Optional[float] = None):
         if requests_per_sec is None:
             # Increment by 5 requests/sec each time food is eaten
             current_rate = request_rates[game_id]["rate"]
-            requests_per_sec = current_rate + LOAD_INCREMENT
+            requests_per_sec = current_rate + float(LOAD_INCREMENT)
         else:
             requests_per_sec = float(requests_per_sec)
         

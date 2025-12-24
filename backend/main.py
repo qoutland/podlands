@@ -8,7 +8,7 @@ from queue import Queue
 import threading
 import sys
 
-from common.config import HTTP_SCHEME, DOMAIN
+from common.config import CORS_DOMAIN
 from common.logger import logger
 
 app = FastAPI(title="Chaos Arena API")
@@ -19,7 +19,7 @@ logger.info("Starting Chaos Arena API")
 # Configure CORS to allow frontend requests
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[f"{HTTP_SCHEME}://{DOMAIN}"],  # Add other origins as needed
+    allow_origins=[f"{CORS_DOMAIN}"],  # Add other origins as needed
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

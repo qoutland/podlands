@@ -1,9 +1,8 @@
 export default function Home() {
   const skills = [
-    { category: "Cloud & Infrastructure", items: ["AWS", "Azure", "Kubernetes", "Docker", "Terraform", "Helm"] },
-    { category: "DevOps & CI/CD", items: ["GitHub Actions", "Jenkins", "ArgoCD", "GitOps", "Monitoring", "Observability"] },
-    { category: "Languages", items: ["Python", "TypeScript", "JavaScript", "Go", "Bash", "YAML"] },
-    { category: "Platforms & Tools", items: ["FastAPI", "React", "Linux", "Prometheus", "Grafana", "ELK Stack"] },
+    { category: "Cloud & Infrastructure", items: ["AWS", "GCP", "Kubernetes", "Docker", "DataDog", "Grafana"] },
+    { category: "DevOps & CI/CD", items: ["Jenkins", "GitHub Actions", "ArgoCD", "FluxCD"] },
+    { category: "Languages", items: ["Python", "Bash", "JavaScript", "Terraform", "Ansible", "SQL"] },
   ];
 
   const workExperience = [
@@ -11,25 +10,66 @@ export default function Home() {
       title: "Staff Software Engineer - Infrastructure",
       company: "LeanTaaS Inc.",
       location: "Santa Clara, CA / Remote",
-      period: "2020 - Present",
+      period: "Mar 2020 - Present",
       description: "Built and maintained the infrastructure for the LeanTaaS platform, including the Kubernetes cluster, CI/CD pipelines, and monitoring systems.",
       achievements: [
-        "Achievement or responsibility bullet point",
-        "Another key achievement or responsibility",
-        "Notable contribution or project"
+        "Migrated from fully managed servers to near-serverless infrastructure",
+        "Implemented CI/CD pipelines for the application for multiple product lines",
+        "Created and designed infrastructure for messaging system accepting 10M+ messages per day",
+        "Architected and automated a scalable VPN solution with 160+ customers"
       ]
     },
     {
-      title: "Previous Position",
-      company: "Company Name",
-      location: "Location",
-      period: "2022 - 2024",
-      description: "Key responsibilities and achievements at this position.",
+      title: "Software Engineer ",
+      company: "Rubrik Inc. (Taos) Contract",
+      location: "Palo Alto, CA",
+      period: "Aug 2019 - Feb 2020",
+      description: "Developed Infrastructure Management and Provisioning Application for improved product demonstrations and private cloud management",
       achievements: [
-        "Achievement or responsibility bullet point",
-        "Another key achievement or responsibility"
+        "Infrastructure for hosting application on Kubernetes",
+        "Maintained system images and deployment models for this application"
       ]
     },
+    {
+      title: "Student Intern",
+      company: "NVEnergy",
+      location: "Reno, NV",
+      period: "Oct 2016 - June 2019",
+      description: "Maintained on premise infrastructure, ensured compliance with Government regulations and standards",
+      achievements: [
+        "Managed at scale infrastructure maintiaining energy production and distribution systems",
+        "Ensured compliance with Government regulations and standards (NERC, FERC, CIP, etc.)",
+        "Created and maintained a web application for monitoring lightning detection across the state of Nevada"
+      ]
+    },
+  ];
+
+
+  const education = [
+    {
+      title: "Bachelor of Science in Computer Science",
+      creditor: "University of Nevada, Reno",
+      period: "2016 - 2020",
+      link: "https://www.unr.edu/degrees/majors/computer-science-engineering"
+    },
+    {
+      title: "Docker Certified Associate",
+      creditor: "Docker",
+      period: "Aug 2019",
+      link: "/certs/docker.pdf"
+    },
+    {
+      title: "Certified Kubernetes Application Developer",
+      creditor: "Linux Foundation",
+      period: "Feb 2020",
+      link: "/certs/ckad.pdf"
+    },
+    {
+      title: "AWS Certified Cloud Practitioner",
+      creditor: "Amazon Web Services",
+      period: "Nov 2021",
+      link: "https://www.credly.com/badges/66316742-e644-460f-be52-a89716f43c7a"
+    }
   ];
 
   return (
@@ -166,6 +206,34 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section style={{ marginBottom: "3rem" }}>
+        <h2 className="podlands-title" style={{ fontSize: "2rem", marginBottom: "1.5rem" }}>
+          Education and Certifications
+        </h2>
+        <div style={{ display: "grid", gap: "1.5rem" }}>
+          {education.map((edu, idx) => (
+            <div key={idx} className="podlands-card">
+              <h3 style={{ color: "#000", marginTop: 0, marginBottom: "0.25rem", fontSize: "1.5rem", textTransform: "uppercase", letterSpacing: "1px", fontWeight: 900 }}>
+                {edu.title}
+              </h3>
+              <p style={{ color: "#000", margin: 0, fontSize: "1rem", lineHeight: "1.6" }}>
+                {edu.creditor} • {edu.period}
+              </p>
+              <a
+                href={edu.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="podlands-button podlands-button-small"
+                style={{ textDecoration: "none", left: "90%"}}
+              >
+                View
+              </a>
             </div>
           ))}
         </div>

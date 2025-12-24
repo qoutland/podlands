@@ -21,3 +21,7 @@ spec:
       image:
         repository: ghcr.io/qoutland/podlands/frontend
         tag: "2025.1223.2127" # {"$imagepolicy": "flux-system:podlands-frontend:tag"}
+  snake:
+    image:
+      repository: ghcr.io/qoutland/podlands/snake
+      tag: "2025.1218.200" # {"$imagepolicy": "flux-system:podlands-snake:tag"}

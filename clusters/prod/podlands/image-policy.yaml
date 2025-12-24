@@ -21,3 +21,15 @@ spec:
   policy:
     semver:
       range: ">=0.0.0"
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImagePolicy
+metadata:
+  name: podlands-frontend
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: podlands-snake
+  policy:
+    semver:
+      range: ">=0.0.0"

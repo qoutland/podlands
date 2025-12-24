@@ -81,8 +81,8 @@ export default function Navbar() {
         </div>
 
         <a
-          href="/resume.pdf"
-          download
+          href="/certs/QuintnOutlandResume.pdf"
+          target="_blank"
           className="podlands-button podlands-button-small"
           style={{
             textDecoration: "none",
